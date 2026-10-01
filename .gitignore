@@ -1,0 +1,22 @@
+# CMake build directories
+build/
+build-*/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+
+# Executables / object files
+*.exe
+*.o
+*.obj
+
+# Editor / OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+build/
+build-asan/
