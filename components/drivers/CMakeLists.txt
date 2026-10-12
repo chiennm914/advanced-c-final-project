@@ -1,0 +1,14 @@
+add_library(drivers STATIC
+    src/temp_drv.c
+    src/humi_drv.c
+    src/sensor_mgr.c
+)
+
+target_include_directories(drivers PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+target_link_libraries(drivers PUBLIC
+    common
+    hal
+)
