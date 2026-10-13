@@ -1,0 +1,32 @@
+#ifndef RING_BUFFER_H
+#define RING_BUFFER_H
+#include <stdbool.h>
+
+#include <stdint.h>
+#include "common_types.h"
+
+#define RING_BUFFER_CAPACITY 16U
+
+typedef struct {
+    int16_t data[RING_BUFFER_CAPACITY];
+    uint32_t head;
+    uint32_t tail;
+    uint32_t count;
+    uint32_t capacity;
+} ring_buffer_t;
+
+status_t ring_init(ring_buffer_t *p_rb);
+
+status_t ring_push(ring_buffer_t *p_rb, int16_t value);
+
+status_t ring_pop(ring_buffer_t *p_rb, int16_t *p_value);
+
+bool ring_is_empty(const ring_buffer_t *p_rb);
+
+bool ring_is_full(const ring_buffer_t *p_rb);
+
+status_t ring_peek(const ring_buffer_t *p_rb, int16_t *p_value);
+
+uint32_t ring_count(const ring_buffer_t *p_rb);
+
+#endif /* RING_BUFFER_H */
