@@ -2,13 +2,13 @@
 #ifndef TELEMETRY_H
 #define TELEMETRY_H
 
-#include <stdint.h>
 #include "common_types.h"
 #include "sensor_mgr.h"
+#include <stdint.h>
 
-#define TLV_SYNC_BYTE       (0xAAU)
+#define TLV_SYNC_BYTE (0xAAU)
 #define TLV_MAX_PACKET_SIZE (8U)
-#define TLV_HEADER_SIZE     (4U)
+#define TLV_HEADER_SIZE (4U)
 
 /**
  * @brief Serialize temperature and humidity into TLV packets.
@@ -19,10 +19,8 @@
  * @param[out] p_written Number of bytes written.
  * @return STATUS_OK on success, error status otherwise.
  */
-status_t telemetry_serialize(const sensor_data_t *p_data,
-                             uint8_t *p_buf,
-                             uint32_t buf_size,
-                             uint32_t *p_written);
+status_t telemetry_serialize(const sensor_data_t *p_data, uint8_t *p_buf,
+                             uint32_t buf_size, uint32_t *p_written);
 
 /**
  * @brief Deserialize TLV packets into sensor readings.
@@ -32,8 +30,7 @@ status_t telemetry_serialize(const sensor_data_t *p_data,
  * @param[out] p_data Recovered sensor readings.
  * @return STATUS_OK on success, error status otherwise.
  */
-status_t telemetry_deserialize(const uint8_t *p_buf,
-                               uint32_t buf_len,
+status_t telemetry_deserialize(const uint8_t *p_buf, uint32_t buf_len,
                                sensor_data_t *p_data);
 
 /**

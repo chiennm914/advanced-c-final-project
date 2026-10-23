@@ -1,10 +1,10 @@
 #ifndef CLI_CMD_H
 #define CLI_CMD_H
 
-#include "common_types.h"
-#include "app_fsm.h"
-#include <stdbool.h>
 #include "alert.h"
+#include "app_fsm.h"
+#include "common_types.h"
+#include <stdbool.h>
 
 /**
  * @file cli_cmd.h
@@ -14,16 +14,14 @@
 /**
  * @brief CLI command entry.
  */
-typedef struct
-{
-    const char *p_name;
-    void (*handler)(void *p_ctx);
+typedef struct {
+  const char *p_name;
+  void (*handler)(void *p_ctx);
 } cli_command_t;
 
-typedef struct
-{
-    system_state_t current_state;
-    bool quit_requested;
+typedef struct {
+  system_state_t current_state;
+  bool quit_requested;
 } app_context_t;
 
 /**
@@ -37,7 +35,5 @@ typedef struct
  *         STATUS_ERR_INVALID_PARAM if command is unknown.
  */
 status_t cli_dispatch(const char *p_input, void *p_ctx);
-
-
 
 #endif /* CLI_CMD_H */

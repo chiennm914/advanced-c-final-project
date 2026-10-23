@@ -8,8 +8,8 @@
  * @brief Sensor readings in fixed-point format (x10).
  */
 typedef struct {
-    int16_t temperature;
-    int16_t humidity;
+  int16_t temperature;
+  int16_t humidity;
 } sensor_data_t;
 
 /**
