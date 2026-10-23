@@ -28,7 +28,8 @@ typedef enum {
     STATUS_ERR_INVALID_PARAM,
     STATUS_ERR_TIMEOUT,
     STATUS_ERR_FULL,
-    STATUS_ERR_EMPTY
+    STATUS_ERR_EMPTY,
+    STATUS_ERR_IO
 } status_t;
 
 #endif /* COMMON_TYPES_H */
