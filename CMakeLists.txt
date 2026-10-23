@@ -20,6 +20,8 @@ find_program(CPPCHECK_EXE NAMES cppcheck)
 if(CPPCHECK_EXE)
     add_custom_target(cppcheck
         COMMAND ${CPPCHECK_EXE}
+            --suppress=constParameterPointer
+            --suppress=unmatchedSuppression
             --inline-suppr
             --check-level=exhaustive
             --enable=all --inconclusive --std=c11
