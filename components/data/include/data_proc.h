@@ -1,16 +1,16 @@
 #ifndef DATA_PROC_H
 #define DATA_PROC_H
 
-#include <stdint.h>
 #include "common_types.h"
 #include "ring_buffer.h"
+#include <stdint.h>
 
 #define DATA_PROC_DEFAULT_WINDOW 10U
 
 typedef struct {
-    ring_buffer_t buffer;
-    uint8_t window_size;
-    int32_t running_sum;
+  ring_buffer_t buffer;
+  uint8_t window_size;
+  int32_t running_sum;
 } data_proc_t;
 
 /**

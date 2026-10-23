@@ -4,10 +4,10 @@
 #include <stdint.h>
 
 /** @brief Simulated register addresses. */
-#define HAL_REG_TEMP_RAW    (0x00U)
-#define HAL_REG_HUMI_RAW    (0x01U)
-#define HAL_REG_STATUS      (0x02U)
-#define HAL_REG_COUNT        (3U)
+#define HAL_REG_TEMP_RAW (0x00U)
+#define HAL_REG_HUMI_RAW (0x01U)
+#define HAL_REG_STATUS (0x02U)
+#define HAL_REG_COUNT (3U)
 
 /**
  * @brief Initialize the HAL simulation.
@@ -38,4 +38,3 @@ void hal_sim_write_register(uint8_t reg_addr, uint16_t value);
 void hal_sim_update(void);
 
 #endif /* HAL_SIM_H */
-

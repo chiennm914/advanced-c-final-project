@@ -2,17 +2,17 @@
 #define RING_BUFFER_H
 #include <stdbool.h>
 
-#include <stdint.h>
 #include "common_types.h"
+#include <stdint.h>
 
 #define RING_BUFFER_CAPACITY 16U
 
 typedef struct {
-    int16_t data[RING_BUFFER_CAPACITY];
-    uint32_t head;
-    uint32_t tail;
-    uint32_t count;
-    uint32_t capacity;
+  int16_t data[RING_BUFFER_CAPACITY];
+  uint32_t head;
+  uint32_t tail;
+  uint32_t count;
+  uint32_t capacity;
 } ring_buffer_t;
 
 status_t ring_init(ring_buffer_t *p_rb);

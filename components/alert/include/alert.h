@@ -15,12 +15,11 @@
 /**
  * @brief Alert threshold configuration.
  */
-typedef struct
-{
-    int16_t temp_max;
-    int16_t temp_min;
-    int16_t humi_max;
-    int16_t humi_min;
+typedef struct {
+  int16_t temp_max;
+  int16_t temp_min;
+  int16_t humi_max;
+  int16_t humi_min;
 } alert_config_t;
 
 /**
