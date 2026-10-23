@@ -115,14 +115,12 @@ int main(void) {
     }
 
     if ((strchr(input, '\n') == NULL) &&
-        (strlen(input) == sizeof(input) - 1U))
-    {
-        int ch;
+        (strlen(input) == sizeof(input) - 1U)) {
+      int ch;
 
-        do
-        {
-            ch = getchar();
-        } while ((ch != '\n') && (ch != EOF));
+      do {
+        ch = getchar();
+      } while ((ch != '\n') && (ch != EOF));
     }
 
     (void)cli_dispatch(input, &app);

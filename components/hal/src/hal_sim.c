@@ -30,10 +30,11 @@ void hal_sim_update(void) {
   uint16_t temp_raw;
   uint16_t humi_raw;
 
-  temp_raw = (uint16_t)(200U + ((unsigned int)rand() % 151U)); /* NOLINT(cert-msc30-c,cert-msc50-cpp,misc-predictable-rand)
-                                                                */
-  humi_raw = (uint16_t)(400U + ((unsigned int)rand() % 401U)); /* NOLINT(cert-msc30-c,cert-msc50-cpp,misc-predictable-rand)
-                                                                */
+  // NOLINTNEXTLINE(cert-msc30-c,cert-msc50-cpp,misc-predictable-rand)
+  temp_raw = (uint16_t)(200U + ((unsigned int)rand() % 151U));
+
+  // NOLINTNEXTLINE(cert-msc30-c,cert-msc50-cpp,misc-predictable-rand)
+  humi_raw = (uint16_t)(400U + ((unsigned int)rand() % 401U));
 
   s_registers[HAL_REG_TEMP_RAW] = temp_raw;
   s_registers[HAL_REG_HUMI_RAW] = humi_raw;

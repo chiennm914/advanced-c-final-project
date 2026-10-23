@@ -3,9 +3,11 @@
 #include "ring_buffer.h"
 #include "unity.h"
 
-void setUp(void) { /* No setup required */ }
+void setUp(void) { /* No setup required */
+}
 
-void tearDown(void) { /* No cleanup required */ }
+void tearDown(void) { /* No cleanup required */
+}
 static void test_ring_fifo(void) {
   ring_buffer_t rb;
   int16_t value = 0;
