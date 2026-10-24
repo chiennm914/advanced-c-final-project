@@ -1,0 +1,14 @@
+Checks: >
+  -*,
+  bugprone-*,
+  cert-*,
+  clang-analyzer-*,
+  misc-*,
+  -misc-include-cleaner,
+  -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling
+
+WarningsAsErrors: >
+  bugprone-*,
+  cert-*
+
+HeaderFilterRegex: 'components/.*\.h$'

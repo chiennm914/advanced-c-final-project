@@ -1,0 +1,105 @@
+
+name: IoT Monitor CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+      - 'release/**'
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    name: Build + clang-tidy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc cmake ninja-build clang-tidy
+
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
+
+      - name: Build with clang-tidy
+        run: cmake --build build --parallel 2
+
+  pre-commit:
+    name: Pre-commit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc cmake ninja-build clang-tidy
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pre-commit
+        run: python -m pip install pre-commit
+
+      - name: Configure compilation database
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
+
+      - name: Run pre-commit
+        run: pre-commit run --all-files
+
+  cppcheck:
+    name: Static Analysis - cppcheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc cmake ninja-build cppcheck
+
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
+
+      - name: Run cppcheck
+        run: cmake --build build --target cppcheck
+
+  tests:
+    name: Unity Tests + ASan/UBSan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc cmake ninja-build
+
+      - name: Configure sanitizers
+        run: |
+          cmake -S . -B build-sanitizer -G Ninja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DSANITIZER=asan+ubsan
+
+      - name: Build
+        run: cmake --build build-sanitizer --parallel 2
+
+      - name: Run Unity tests
+        run: ctest --test-dir build-sanitizer --output-on-failure
